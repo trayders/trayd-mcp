@@ -1,6 +1,6 @@
-# Trayd - Robinhood Portfolio Intelligence for Claude Code
+# Trayd - Trade Robinhood with Natural Language in Claude Code
 
-Connect Claude Code to your Robinhood account. View positions, analyze performance, and optionally execute trades with explicit confirmations.
+Connect Claude Code to your Robinhood account. Analyze your portfolio, get real-time quotes, and execute trades—all through conversation.
 
 ![MCP](https://img.shields.io/badge/MCP-Compatible-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -16,39 +16,62 @@ Then in Claude Code:
 2. Sign in with Google
 3. Say: *"Link my Robinhood account"*
 4. Approve on your phone
-5. Start analyzing!
+5. Start trading!
 
 ## What You Can Do
 
-### Portfolio Analysis (Read-Only)
+### 📊 Portfolio Analysis
 ```
 "What's my portfolio worth?"
-"Show my current positions and today's P&L"
-"What's my exposure by sector?"
-"Which positions moved most today?"
-"Get me a quote on NVDA"
+"Show my positions with P&L"
+"What's my biggest winner today?"
+"How much cash do I have available?"
 ```
 
-### Trade Execution (Requires Confirmation)
+### 📈 Real-Time Market Data
 ```
-"Buy 10 shares of AAPL" → Shows preview → Requires explicit confirmation
-"Place a limit order for TSLA at $400" → Shows full order details → Confirm to execute
-"Cancel my open orders"
+"What's NVDA trading at?"
+"Get me a quote on AAPL"
+"Check the price of TSLA"
 ```
+
+### 💰 Trade Execution
+```
+"Buy 10 shares of AAPL"
+"Sell 5 shares of GOOGL"
+"Place a limit order for TSLA at $400"
+"Buy 100 shares of SPY at $590"
+```
+
+### 📋 Order Management
+```
+"Show my open orders"
+"Cancel my AAPL order"
+"Cancel all pending orders"
+```
+
+> **Note:** Market orders work during regular hours (9:30 AM - 4 PM ET). Extended hours (pre-market & after-hours) require limit orders—this is a Robinhood policy.
 
 ## Features
 
 ### Portfolio Intelligence
-- **Portfolio Overview** - Equity, cash, buying power at a glance
-- **Position Analysis** - All holdings with cost basis, current value, P&L
-- **Real-time Quotes** - Current prices for any ticker
-- **Order Tracking** - View all open/pending orders
+- **Portfolio Summary** - Total equity, cash balance, buying power
+- **Position Details** - Every holding with quantity, avg cost, current value, P&L
+- **Real-Time Quotes** - Bid/ask, volume, day range for any ticker
+- **Order Tracking** - All open and pending orders
 
-### Trade Execution (Optional)
-- **Market Orders** - Buy/sell at market price
-- **Limit Orders** - Set your price
-- **Order Management** - Cancel open orders
-- **Explicit Confirmation** - Every trade shows full preview before execution
+### Trade Execution
+- **Market Orders** - Buy/sell at current market price
+- **Limit Orders** - Set your exact entry/exit price
+- **Fractional Shares** - Trade any dollar amount
+- **Order Cancellation** - Cancel any open order instantly
+
+### Why Natural Language?
+Instead of clicking through multiple screens:
+```
+Old way: Open app → Search ticker → Click buy → Enter shares → Review → Confirm → Done
+Trayd:   "Buy 10 AAPL" → Confirm → Done
+```
 
 ## Safety & Security
 
@@ -68,87 +91,122 @@ Then in Claude Code:
 - **Audit Trail** - All actions logged with timestamps
 - **Read-Only Default** - Portfolio viewing requires no special permissions
 
-## Tools Available
+## Available Tools
 
-### Read-Only Tools
-| Tool | Description |
-|------|-------------|
-| `check_login_status` | Check if Robinhood is linked |
-| `get_portfolio` | Portfolio summary (equity, cash, buying power) |
-| `get_positions` | All stock positions with P&L |
-| `get_open_orders` | Pending orders |
-| `get_quote` | Stock quote for a ticker |
-| `get_price` | Latest price |
-
-### Execution Tools (Require Confirmation)
-| Tool | Description |
-|------|-------------|
-| `link_robinhood` | Link your Robinhood account |
-| `place_order` | Buy/sell with explicit confirmation |
-| `cancel_order` | Cancel an open order |
-| `logout` | Unlink Robinhood (wipes token immediately) |
+| Tool | What It Does | Example |
+|------|--------------|---------|
+| `get_portfolio` | Portfolio value, cash, buying power | *"What's my portfolio worth?"* |
+| `get_positions` | All holdings with cost basis & P&L | *"Show my positions"* |
+| `get_quote` | Full quote with bid/ask/volume | *"Get a quote on NVDA"* |
+| `get_price` | Quick price check | *"What's AAPL at?"* |
+| `get_open_orders` | Pending orders | *"Any open orders?"* |
+| `place_order` | Buy/sell (market or limit) | *"Buy 10 TSLA at $400"* |
+| `cancel_order` | Cancel an order | *"Cancel my TSLA order"* |
+| `check_login_status` | Check if Robinhood linked | *"Am I connected?"* |
+| `link_robinhood` | Connect Robinhood account | *"Link my Robinhood"* |
+| `logout` | Disconnect & wipe tokens | *"Disconnect Robinhood"* |
 
 ## Example Conversations
 
-### Portfolio Analysis
+### Check Your Portfolio
 ```
-You: What's my portfolio looking like?
+You: What's my portfolio worth?
 
-Claude: Your portfolio summary:
-  • Total Equity: $229,956
-  • Cash: $2,021
-  • Positions: 12
-
-  Top Holdings:
-  1. NVDA - 1,353 shares @ $187.79 (+$13,038 gain)
-  2. AAPL - 500 shares @ $273.84 (+$5,230 gain)
-  3. GOOGL - 100 shares @ $313.26 (+$2,100 gain)
+Claude: Your Robinhood portfolio:
+  • Total Equity: $45,230.82
+  • Cash Available: $2,156.33
+  • Buying Power: $2,156.33
 ```
 
-### Trade Execution (with confirmation)
+### View Positions
 ```
-You: Buy 10 shares of AAPL
+You: Show my positions
 
-Claude: Order Preview:
-  • Action: BUY
-  • Symbol: AAPL
-  • Quantity: 10 shares
-  • Type: Market Order
-  • Estimated Cost: ~$2,738
+Claude: Your current holdings:
 
-  Do you want to place this order? (yes/no)
+  NVDA - 50 shares
+  • Avg Cost: $127.45 → Current: $137.01
+  • Market Value: $6,850.50
+  • P&L: +$478.00 (+7.5%)
 
-You: yes
+  AAPL - 100 shares
+  • Avg Cost: $178.23 → Current: $254.49
+  • Market Value: $25,449.00
+  • P&L: +$7,626.00 (+42.8%)
+```
 
-Claude: ✅ Order placed successfully
-  Order ID: abc123...
+### Get a Quote
+```
+You: What's TSLA trading at?
+
+Claude: TSLA (Tesla Inc) - $421.06
+  • Bid: $421.05 × 100
+  • Ask: $421.08 × 200
+  • Day Range: $415.02 - $428.50
+  • Volume: 42.3M
+```
+
+### Place a Trade
+```
+You: Buy 5 shares of GOOGL at $191
+
+Claude: I'll place a limit order to buy 5 shares of GOOGL at $191.00.
+
+  [Calls place_order tool]
+
+  ✓ Limit order placed successfully
+  • Order ID: 67890-abcdef
+  • Buy 5 GOOGL @ $191.00 limit
+```
+
+### Cancel an Order
+```
+You: Cancel my GOOGL order
+
+Claude: [Calls cancel_order tool]
+
+  ✓ Order cancelled successfully
 ```
 
 ## Troubleshooting
 
-**Browser doesn't open for auth?**
-→ Type `/mcp` in Claude Code, select `trayd`, click "Authorize"
+| Issue | Solution |
+|-------|----------|
+| Browser doesn't open for auth | Type `/mcp` → select `trayd` → click "Authorize" |
+| Phone notification not received | Ensure Robinhood app is installed and you're logged in |
+| "Authentication required" error | Run `/mcp` to re-authenticate |
+| Market order rejected after hours | Use limit orders (Robinhood policy for extended hours) |
 
-**Phone notification not received?**
-→ Make sure Robinhood app is installed and you're logged in. Try again.
+## FAQ
 
-**"Authentication required" error?**
-→ Run `/mcp` to re-authenticate (tokens expire on server restart)
+**Is this safe?**
+Yes. Your Robinhood password is sent directly to Robinhood's servers—we never see or store it. Access tokens are held in memory only and wiped on logout or server restart.
 
-## Privacy & Compliance
+**Can I use this for day trading?**
+Yes, but be aware of Robinhood's pattern day trader rules if you have under $25k equity.
 
-- Your Robinhood credentials are sent directly to Robinhood, never stored by Trayd
+**Does this work with Robinhood Gold?**
+Yes, all Robinhood account types are supported.
+
+**What happens if the server restarts?**
+You'll need to re-link your Robinhood account. This is a security feature—tokens are never persisted to disk.
+
+## Privacy
+
+- Credentials sent directly to Robinhood, never stored
 - Access tokens exist only in server memory
-- No trading data is logged or stored permanently
+- No trading data logged or stored
 - Full token wipe on logout or server restart
 
-**This tool is not affiliated with Robinhood Markets, Inc.**
+---
 
-**Not financial advice.** This tool helps you interact with your own brokerage account. All investment decisions are your own.
+**Not affiliated with Robinhood Markets, Inc.**
+
+**Not financial advice.** This tool helps you interact with your own brokerage account. All investment decisions are yours.
 
 ## Support
 
-- Issues: [GitHub Issues](https://github.com/trayders/trayd-mcp/issues)
+- GitHub: [trayders/trayd-mcp](https://github.com/trayders/trayd-mcp/issues)
 - Email: team@trayd.ai
 
 ## License
