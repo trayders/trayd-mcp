@@ -73,23 +73,42 @@ Old way: Open app → Search ticker → Click buy → Enter shares → Review �
 Trayd:   "Buy 10 AAPL" → Confirm → Done
 ```
 
-## Safety & Security
+## Security Model
+
+### How Your Credentials Flow
+
+```
+You → Claude Code → Trayd Server → Robinhood API
+         ↓              ↓
+    (MCP token)    (Your RH credentials
+                   passed through to RH,
+                   NEVER stored by us)
+```
+
+**Important to understand:**
+- Your Robinhood email/password pass through our server to Robinhood's API
+- We **never log, store, or persist** your password - it goes directly to Robinhood
+- After login, Robinhood returns access tokens which we hold **in memory only**
+- Tokens are wiped on: logout, server restart, or container redeployment
+
+### What We Store (and Don't)
+
+| Data | Stored? | Where | Duration |
+|------|---------|-------|----------|
+| Robinhood password | **NO** | Never touches disk | Passed through, then discarded |
+| Robinhood access token | Yes | Server memory only | Until logout/restart |
+| Your trades/positions | **NO** | Not logged | Fetched live from RH |
+| Your Google identity | Yes | Via Clerk | For auth only |
 
 ### Authentication
-- **OAuth 2.1 with PKCE** - Industry-standard secure auth
-- **Google Sign-in** - No passwords stored by Trayd
-- **Robinhood Phone 2FA** - Native Robinhood security required
+- **OAuth 2.1 with PKCE** - Industry-standard secure auth flow
+- **Google Sign-in via Clerk** - We don't handle Google passwords
+- **Robinhood Phone 2FA** - Native Robinhood security, you approve on your phone
 
-### Data Security
-- **Memory-Only Storage** - Tokens never written to disk
-- **Session Isolation** - Each user's data completely separate
-- **Auto-Wipe** - All tokens cleared on server restart or logout
-
-### Trade Safety
-- **Explicit Confirmation Required** - Every order shows full details before execution
-- **Order Preview** - Ticker, side, quantity, order type displayed before confirm
-- **Audit Trail** - All actions logged with timestamps
-- **Read-Only Default** - Portfolio viewing requires no special permissions
+### Infrastructure
+- **AWS ECS Fargate** - Containerized, isolated execution
+- **Cloudflare Tunnel** - DDoS protection, no exposed ports
+- **HTTPS everywhere** - All traffic encrypted
 
 ## Available Tools
 
@@ -180,7 +199,20 @@ Claude: [Calls cancel_order tool]
 ## FAQ
 
 **Is this safe?**
-Yes. Your Robinhood password is sent directly to Robinhood's servers—we never see or store it. Access tokens are held in memory only and wiped on logout or server restart.
+We've designed this with security in mind: passwords pass through to Robinhood without storage, tokens exist only in memory, and you approve every login via phone. That said, you are trusting our server with temporary access to your brokerage. Review the [Security Model](#security-model) and decide if you're comfortable.
+
+**Why should I trust you?**
+Fair question. You can:
+- Review how credentials flow (documented above)
+- Logout anytime to wipe your token immediately
+- Know that server restarts automatically wipe all tokens
+- We're a small team building this openly—our reputation depends on doing this right
+
+**Can I self-host this?**
+Not yet, but we're considering it. If there's demand, we may open-source the server.
+
+**Does this violate Robinhood's Terms of Service?**
+This uses Robinhood's unofficial API (same as other third-party apps). While we haven't seen enforcement, use at your own discretion.
 
 **Can I use this for day trading?**
 Yes, but be aware of Robinhood's pattern day trader rules if you have under $25k equity.
@@ -191,12 +223,25 @@ Yes, all Robinhood account types are supported.
 **What happens if the server restarts?**
 You'll need to re-link your Robinhood account. This is a security feature—tokens are never persisted to disk.
 
-## Privacy
+**What if something goes wrong with a trade?**
+You are responsible for all trades placed through your account. We provide the interface; you make the decisions. Always verify orders before confirming.
 
-- Credentials sent directly to Robinhood, never stored
-- Access tokens exist only in server memory
-- No trading data logged or stored
-- Full token wipe on logout or server restart
+## Risks & Disclaimers
+
+**Please read before using:**
+
+- **USE AT YOUR OWN RISK** - This software is provided "as is" without warranty
+- **NOT FINANCIAL ADVICE** - We don't provide investment recommendations
+- **YOU ARE RESPONSIBLE** - For all trades and decisions made through this tool
+- **UNOFFICIAL API** - This uses Robinhood's unofficial API, not an official integration
+- **NO LIABILITY** - We are not liable for any losses, bugs, or issues
+- **BETA SOFTWARE** - This is early-stage software; expect rough edges
+
+**By using Trayd, you acknowledge:**
+1. You understand the security model and accept the risks
+2. You are solely responsible for your trading decisions
+3. You will not hold Trayd liable for any losses
+4. You understand this is not affiliated with Robinhood
 
 ---
 
