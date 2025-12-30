@@ -5,6 +5,8 @@ Connect Claude Code to your Robinhood account. Analyze your portfolio, get real-
 ![MCP](https://img.shields.io/badge/MCP-Compatible-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
+![Demo](demo.gif)
+
 ## Quick Start
 
 ```bash
@@ -251,8 +253,8 @@ You are responsible for all trades placed through your account. We provide the i
 
 ## Support
 
-- GitHub: [trayders/trayd-mcp](https://github.com/trayders/trayd-mcp/issues)
 - Email: team@trayd.ai
+- GitHub: [trayders/trayd-mcp](https://github.com/trayders/trayd-mcp/issues)
 
 ## License
 
