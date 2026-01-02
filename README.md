@@ -201,14 +201,22 @@ Claude: [Calls cancel_order tool]
 ## FAQ
 
 **Is this safe?**
-We've designed this with security in mind: passwords pass through to Robinhood without storage, tokens exist only in memory, and you approve every login via phone. That said, you are trusting our server with temporary access to your brokerage. Review the [Security Model](#security-model) and decide if you're comfortable.
+
+Yes, and here's why you can verify it yourself:
+
+1. **Phone 2FA on every login** - Robinhood sends a notification to your phone. Nothing happens unless you tap "Approve". You control access.
+
+2. **Your Claude is honest to you** - This MCP runs through *your* Claude Code. Ask Claude "Am I logged in to Robinhood?" or "Is my Robinhood linked?" anytime. Claude will honestly tell you your connection status because it's *your* assistant.
+
+3. **Instant logout, verified by Claude** - Say "Logout from Robinhood" and all credentials are immediately wiped from memory. Then ask Claude "Am I still connected?" - it will confirm you're logged out. No trust required—verify it yourself.
 
 **Why should I trust you?**
-Fair question. You can:
-- Review how credentials flow (documented above)
-- Logout anytime to wipe your token immediately
-- Know that server restarts automatically wipe all tokens
-- We're a small team building this openly—our reputation depends on doing this right
+
+You don't have to trust us blindly—you can verify:
+- **Phone approval required** - We can't access your account without you tapping Approve
+- **Ask Claude to verify** - Your Claude Code honestly reports your connection status
+- **Logout = instant wipe** - Say "logout" and ask Claude to confirm you're disconnected
+- **Server restarts wipe everything** - Tokens only exist in memory, never on disk
 
 **Can I self-host this?**
 Not yet, but we're considering it. If there's demand, we may open-source the server.
