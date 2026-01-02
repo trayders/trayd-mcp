@@ -108,21 +108,6 @@ You → Claude Code → Trayd Server → Robinhood API
 - **Cloudflare Tunnel** - DDoS protection, no exposed ports
 - **HTTPS everywhere** - All traffic encrypted
 
-## Available Tools
-
-| Tool | What It Does | Example |
-|------|--------------|---------|
-| `get_portfolio` | Portfolio value, cash, buying power | *"What's my portfolio worth?"* |
-| `get_positions` | All holdings with cost basis & P&L | *"Show my positions"* |
-| `get_quote` | Full quote with bid/ask/volume | *"Get a quote on NVDA"* |
-| `get_price` | Quick price check | *"What's AAPL at?"* |
-| `get_open_orders` | Pending orders | *"Any open orders?"* |
-| `place_order` | Buy/sell (market or limit) | *"Buy 10 TSLA at $400"* |
-| `cancel_order` | Cancel an order | *"Cancel my TSLA order"* |
-| `check_login_status` | Check if Robinhood linked | *"Am I connected?"* |
-| `link_robinhood` | Connect Robinhood account | *"Link my Robinhood"* |
-| `logout` | Disconnect & wipe tokens | *"Disconnect Robinhood"* |
-
 ## Example Conversations
 
 ### Check Your Portfolio
