@@ -235,21 +235,6 @@ You don't have to trust us blindly—you can verify:
 - **Logout = instant wipe** - Say "logout" and ask Claude to confirm you're disconnected
 - **Server restarts wipe everything** - Tokens only exist in memory, never on disk
 
-**Can I self-host this?**
-Not yet, but we're considering it. If there's demand, we may open-source the server.
-
-**Does this violate Robinhood's Terms of Service?**
-This uses Robinhood's unofficial API (same as other third-party apps). While we haven't seen enforcement, use at your own discretion.
-
-**Can I use this for day trading?**
-Yes, but be aware of Robinhood's pattern day trader rules if you have under $25k equity.
-
-**Does this work with Robinhood Gold?**
-Yes, all Robinhood account types are supported.
-
-**What happens if the server restarts?**
-You'll need to re-link your Robinhood account. This is a security feature—tokens are never persisted to disk.
-
 **What if something goes wrong with a trade?**
 You are responsible for all trades placed through your account. We provide the interface; you make the decisions. Always verify orders before confirming.
 
