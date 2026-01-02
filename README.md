@@ -53,13 +53,6 @@ Then in Claude Code:
 "Buy $500 worth of each: AAPL, GOOGL, MSFT"
 ```
 
-### 📋 Order Management
-```
-"Show my open orders"
-"Cancel all my NVDA orders"
-"Cancel everything and start fresh"
-```
-
 > **Note:** Market orders work during regular hours (9:30 AM - 4 PM ET). Extended hours (pre-market & after-hours) require limit orders—this is a Robinhood policy.
 
 ## Features
