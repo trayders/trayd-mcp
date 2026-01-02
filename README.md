@@ -191,6 +191,8 @@ Yes, and here's why you can verify it yourself:
 
 3. **Instant logout, verified by Claude** - Say "Logout from Robinhood" and all credentials are immediately wiped from memory. Then ask Claude "Am I still connected?" - it will confirm you're logged out. No trust required—verify it yourself.
 
+4. **Test with a safe order first** - Try "Place a limit buy for 1 NVDA at $50" (a price that won't execute). Check your Robinhood app—you'll see the order. Cancel it from either place. Now you know it works, with zero risk.
+
 **Why should I trust you?**
 
 You don't have to trust us blindly—you can verify:
