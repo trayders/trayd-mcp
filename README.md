@@ -209,7 +209,6 @@ You are responsible for all trades placed through your account. We provide the i
 - **USE AT YOUR OWN RISK** - This software is provided "as is" without warranty
 - **NOT FINANCIAL ADVICE** - We don't provide investment recommendations
 - **YOU ARE RESPONSIBLE** - For all trades and decisions made through this tool
-- **UNOFFICIAL API** - This uses Robinhood's unofficial API, not an official integration
 - **NO LIABILITY** - We are not liable for any losses, bugs, or issues
 - **BETA SOFTWARE** - This is early-stage software; expect rough edges
 
