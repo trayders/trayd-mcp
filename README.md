@@ -25,9 +25,9 @@ Then in Claude Code:
 ### 📊 Portfolio Analysis
 ```
 "What's my portfolio worth?"
-"Show my positions with P&L"
-"What's my biggest winner today?"
-"How much cash do I have available?"
+"Which positions are up today? Which are down?"
+"What's my biggest winner this week?"
+"Show me everything that's down more than 5%"
 ```
 
 ### 📈 Real-Time Market Data
@@ -40,16 +40,24 @@ Then in Claude Code:
 ### 💰 Trade Execution
 ```
 "Buy 10 shares of AAPL"
-"Sell 5 shares of GOOGL"
 "Place a limit order for TSLA at $400"
-"Buy 100 shares of SPY at $590"
+"Set 5 ladder buys for NVDA from $180-$175"
+"Set stop losses on all my positions at -5%"
+```
+
+### 🔥 Complex Operations (One Sentence)
+```
+"Sell half of my TSLA position"
+"What's my biggest loser today? Sell it."
+"Cancel all my open orders and show me what's left"
+"Buy $500 worth of each: AAPL, GOOGL, MSFT"
 ```
 
 ### 📋 Order Management
 ```
 "Show my open orders"
-"Cancel my AAPL order"
-"Cancel all pending orders"
+"Cancel all my NVDA orders"
+"Cancel everything and start fresh"
 ```
 
 > **Note:** Market orders work during regular hours (9:30 AM - 4 PM ET). Extended hours (pre-market & after-hours) require limit orders—this is a Robinhood policy.
@@ -69,10 +77,19 @@ Then in Claude Code:
 - **Order Cancellation** - Cancel any open order instantly
 
 ### Why Natural Language?
-Instead of clicking through multiple screens:
+Instead of clicking through dozens of screens:
 ```
-Old way: Open app → Search ticker → Click buy → Enter shares → Review → Confirm → Done
-Trayd:   "Buy 10 AAPL" → Confirm → Done
+Setting 5 ladder limit orders manually:
+  Open app → Search NVDA → Buy → Limit → $180 → 10 shares → Submit
+  → Search NVDA → Buy → Limit → $178.75 → 10 shares → Submit
+  → Search NVDA → Buy → Limit → $177.50 → 10 shares → Submit
+  → Search NVDA → Buy → Limit → $176.25 → 10 shares → Submit
+  → Search NVDA → Buy → Limit → $175 → 10 shares → Submit
+  (50+ clicks, 5 minutes)
+
+With Trayd:
+  "Set 5 ladder buys for NVDA from $180-$175"
+  (1 sentence, 10 seconds)
 ```
 
 ## Security Model
