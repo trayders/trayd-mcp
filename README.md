@@ -55,20 +55,6 @@ Then in Claude Code:
 
 > **Note:** Market orders work during regular hours (9:30 AM - 4 PM ET). Extended hours (pre-market & after-hours) require limit orders—this is a Robinhood policy.
 
-## Features
-
-### Portfolio Intelligence
-- **Portfolio Summary** - Total equity, cash balance, buying power
-- **Position Details** - Every holding with quantity, avg cost, current value, P&L
-- **Real-Time Quotes** - Bid/ask, volume, day range for any ticker
-- **Order Tracking** - All open and pending orders
-
-### Trade Execution
-- **Market Orders** - Buy/sell at current market price
-- **Limit Orders** - Set your exact entry/exit price
-- **Fractional Shares** - Trade any dollar amount
-- **Order Cancellation** - Cancel any open order instantly
-
 ### Why Natural Language?
 Instead of clicking through dozens of screens:
 ```
