@@ -1,4 +1,4 @@
-# Trayd - Trade Robinhood with Natural Language in Claude Code
+# Trayd - Trade Robinhood from Claude Code
 
 Connect Claude Code to your Robinhood account. Analyze your portfolio, get real-time quotes, and execute trades—all through conversation.
 
@@ -55,7 +55,7 @@ Then in Claude Code:
 
 > **Note:** Market orders work during regular hours (9:30 AM - 4 PM ET). Extended hours (pre-market & after-hours) require limit orders—this is a Robinhood policy.
 
-### Why Natural Language?
+### Why Trayd?
 Instead of clicking through dozens of screens:
 ```
 Setting 5 ladder limit orders manually:
