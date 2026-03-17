@@ -7,6 +7,8 @@ Connect Claude Code to your Robinhood account. Analyze your portfolio, get real-
 
 ![Demo](demo.gif)
 
+[![Trayd MCP server](https://glama.ai/mcp/servers/trayders/trayd-mcp/badges/card.svg)](https://glama.ai/mcp/servers/trayders/trayd-mcp)
+
 ## Quick Start
 
 ```bash
