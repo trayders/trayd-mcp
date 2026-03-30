@@ -20,6 +20,10 @@ Then in Claude Code:
 4. Approve on your phone
 5. Start trading!
 
+## Hosted deployment
+
+A hosted deployment is available on [Fronteir AI](https://fronteir.ai/mcp/trayders-trayd-mcp).
+
 ## What You Can Do
 
 ### 📊 Portfolio Analysis
