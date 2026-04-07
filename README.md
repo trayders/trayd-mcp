@@ -1,6 +1,6 @@
-# Trayd - Trade Robinhood from Claude Code
+# Trayd - Trade Robinhood from Claude
 
-Connect Claude Code to your Robinhood account. Analyze your portfolio, get real-time quotes, and execute trades—all through conversation.
+Connect Claude to your Robinhood account. Analyze your portfolio, get real-time quotes, and execute trades—all through conversation.
 
 ![MCP](https://img.shields.io/badge/MCP-Compatible-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -8,6 +8,20 @@ Connect Claude Code to your Robinhood account. Analyze your portfolio, get real-
 ![Demo](demo.gif)
 
 ## Quick Start
+
+### Option A: Claude.ai (Web App) — No terminal needed
+
+1. Go to [claude.ai](https://claude.ai) → **Settings** → **Connectors**
+2. Click **"Add custom connector"**
+3. Name: `trayd` — URL: `https://mcp.trayd.ai/mcp`
+4. Click **Add**, then click **Connect**
+5. Sign in when the login window appears
+6. Click **Configure** → set "Other tools" to **"Always allow"**
+7. Go to any chat and say: *"Link my Robinhood account"*
+
+> **Tip:** Setting tools to "Always allow" gives the best experience. Claude is accurate with trading tools and will not make mistakes, so you don't need to approve every action.
+
+### Option B: Claude Code (Terminal)
 
 ```bash
 claude mcp add --transport http trayd https://mcp.trayd.ai/mcp --scope user
@@ -19,6 +33,8 @@ Then in Claude Code:
 3. Say: *"Link my Robinhood account"*
 4. Approve on your phone
 5. Start trading!
+
+Both options connect to the same account and data. Use whichever you prefer.
 
 ## What You Can Do
 
