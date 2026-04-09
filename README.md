@@ -1,251 +1,115 @@
-# Trayd - Trade Robinhood from Claude
+# Trayd
 
-Connect Claude to your Robinhood account. Analyze your portfolio, get real-time quotes, and execute trades—all through conversation.
+Trade Robinhood from Claude. Portfolio analysis, real-time quotes, and order execution through natural language.
 
 ![MCP](https://img.shields.io/badge/MCP-Compatible-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
+![Users](https://img.shields.io/badge/users-50+-brightgreen)
 
 ![Demo](demo.gif)
 
-## Quick Start
+## Setup
 
-### Option A: Claude.ai (Web App) — No terminal needed
+### Claude.ai (Web App)
 
-1. Go to [claude.ai](https://claude.ai) → **Settings** → **Connectors**
-2. Click **"Add custom connector"**
-3. Name: `trayd` — URL: `https://mcp.trayd.ai/mcp`
-4. Click **Add**, then click **Connect**
-5. Sign in when the login window appears
-6. Click **Configure** → set "Other tools" to **"Always allow"**
-7. Go to any chat and say: *"Link my Robinhood account"*
+1. Go to [claude.ai](https://claude.ai) > **Settings** > **Connectors**
+2. Click **Add custom connector**
+3. Name: `trayd` | URL: `https://mcp.trayd.ai/mcp`
+4. Click **Add** > **Connect** > sign in
+5. Set "Other tools" to **Always allow** for the best experience
+6. Say: *"Link my Robinhood account"*
 
-> **Tip:** Setting tools to "Always allow" gives the best experience. Claude is accurate with trading tools and will not make mistakes, so you don't need to approve every action.
-
-### Option B: Claude Code (Terminal)
+### Claude Code (Terminal)
 
 ```bash
 claude mcp add --transport http trayd https://mcp.trayd.ai/mcp --scope user
 ```
 
-Then in Claude Code:
-1. Type `/mcp` → select `trayd` → click **Authorize**
-2. Sign in with Google
-3. Say: *"Link my Robinhood account"*
-4. Approve on your phone
-5. Start trading!
+Type `/mcp` > select `trayd` > **Authorize** > sign in > *"Link my Robinhood account"*
 
-Both options connect to the same account and data. Use whichever you prefer.
+Both connect to the same account. Use whichever you prefer.
 
-## What You Can Do
+## What It Does
 
-### 📊 Portfolio Analysis
-```
-"What's my portfolio worth?"
-"Which positions are up today? Which are down?"
-"What's my biggest winner this week?"
-"Show me everything that's down more than 5%"
-```
+| Capability | Example |
+|-----------|---------|
+| Portfolio analysis | "What's my portfolio worth?" |
+| Real-time quotes | "What's NVDA trading at?" |
+| Buy and sell | "Buy 10 shares of AAPL at market" |
+| Limit orders | "Place a limit order for TSLA at $400" |
+| Ladder orders | "Set 5 ladder buys for NVDA from $180 to $175" |
+| Multi-account | "List my accounts" / "Switch to my second account" |
+| Batch operations | "Buy $500 worth of each: AAPL, GOOGL, MSFT" |
+| Cancel orders | "Cancel all my open orders" |
 
-### 📈 Real-Time Market Data
-```
-"What's NVDA trading at?"
-"Get me a quote on AAPL"
-"Check the price of TSLA"
-```
+All limit orders default to 24-hour extended trading. Quotes are served 24/7 through a dual-source system — live Robinhood data during market hours, with automatic fallback to a partnered market data provider pre-market and overnight.
 
-### 💰 Trade Execution
-```
-"Buy 10 shares of AAPL"
-"Place a limit order for TSLA at $400"
-"Set 5 ladder buys for NVDA from $180-$175"
-"Set stop losses on all my positions at -5%"
-```
+### Why This Exists
 
-### 🔥 Complex Operations (One Sentence)
-```
-"Sell half of my TSLA position"
-"What's my biggest loser today? Sell it."
-"Cancel all my open orders and show me what's left"
-"Buy $500 worth of each: AAPL, GOOGL, MSFT"
-```
+Setting 5 ladder limit orders on Robinhood takes 50+ clicks and 5 minutes.
 
-> **Note:** Market orders work during regular hours (9:30 AM - 4 PM ET). Extended hours (pre-market & after-hours) require limit orders—this is a Robinhood policy.
+With Trayd: *"Set 5 ladder buys for NVDA from $180 to $175"* — one sentence, 10 seconds.
 
-### Why Trayd?
-Instead of clicking through dozens of screens:
-```
-Setting 5 ladder limit orders manually:
-  Open app → Search NVDA → Buy → Limit → $180 → 10 shares → Submit
-  → Search NVDA → Buy → Limit → $178.75 → 10 shares → Submit
-  → Search NVDA → Buy → Limit → $177.50 → 10 shares → Submit
-  → Search NVDA → Buy → Limit → $176.25 → 10 shares → Submit
-  → Search NVDA → Buy → Limit → $175 → 10 shares → Submit
-  (50+ clicks, 5 minutes)
+## Running a Trading Bot
 
-With Trayd:
-  "Set 5 ladder buys for NVDA from $180-$175"
-  (1 sentence, 10 seconds)
-```
-
-## Security Model
-
-### How Your Credentials Flow
+Claude Code's `/loop` command turns Trayd into an always-on trading agent:
 
 ```
-You → Claude Code → Trayd Server → Robinhood API
-         ↓              ↓
-    (MCP token)    (Your RH credentials
-                   passed through to RH,
-                   NEVER stored by us)
+"Check my positions every 5 minutes. If anything drops 3%, sell it."
+"Monitor NVDA. If it hits $130, buy 20 shares."
+"Every 10 minutes, check my portfolio and alert me if total value drops below $50k."
 ```
 
-**Important to understand:**
-- Your Robinhood email/password pass through our server to Robinhood's API
-- We **never log, store, or persist** your password - it goes directly to Robinhood
-- After login, Robinhood returns access tokens which we hold **in memory only**
-- Tokens are wiped on: logout, server restart, or container redeployment
+No code. No scripts. Just natural language rules that Claude executes on a schedule.
 
-### What We Store (and Don't)
+## Security
 
-| Data | Stored? | Where | Duration |
-|------|---------|-------|----------|
-| Robinhood password | **NO** | Never touches disk | Passed through, then discarded |
-| Robinhood access token | Yes | Server memory only | Until logout/restart |
-| Your trades/positions | **NO** | Not logged | Fetched live from RH |
-| Your Google identity | Yes | Via Clerk | For auth only |
-
-### Authentication
-- **OAuth 2.1 with PKCE** - Industry-standard secure auth flow
-- **Google Sign-in via Clerk** - We don't handle Google passwords
-- **Robinhood Phone 2FA** - Native Robinhood security, you approve on your phone
-
-### Infrastructure
-- **AWS ECS Fargate** - Containerized, isolated execution
-- **Cloudflare Tunnel** - DDoS protection, no exposed ports
-- **HTTPS everywhere** - All traffic encrypted
-
-## Example Conversations
-
-### Check Your Portfolio
 ```
-You: What's my portfolio worth?
-
-Claude: Your Robinhood portfolio:
-  • Total Equity: $45,230.82
-  • Cash Available: $2,156.33
-  • Buying Power: $2,156.33
+You > Claude > Trayd Server > Robinhood API
 ```
 
-### View Positions
-```
-You: Show my positions
+- Robinhood credentials are passed directly to Robinhood's API — **never stored**
+- Access tokens held in memory only — wiped on logout, restart, or redeployment
+- OAuth 2.1 with PKCE for MCP authentication
+- Robinhood phone 2FA on every login — you approve each session on your device
+- Infrastructure: AWS ECS Fargate, Cloudflare Tunnel, HTTPS everywhere
 
-Claude: Your current holdings:
+| Data | Stored? | Details |
+|------|---------|---------|
+| Robinhood password | No | Passed through, immediately discarded |
+| Access token | In memory | Wiped on logout or restart |
+| Trades and positions | No | Fetched live from Robinhood |
+| Google identity | Yes | Via Clerk, for auth only |
 
-  NVDA - 50 shares
-  • Avg Cost: $127.45 → Current: $137.01
-  • Market Value: $6,850.50
-  • P&L: +$478.00 (+7.5%)
+### Verify It Yourself
 
-  AAPL - 100 shares
-  • Avg Cost: $178.23 → Current: $254.49
-  • Market Value: $25,449.00
-  • P&L: +$7,626.00 (+42.8%)
-```
+1. Ask Claude: *"Am I logged into Robinhood?"* — it will tell you honestly
+2. Place a test order that won't execute: *"Limit buy 1 NVDA at $50"* — check your Robinhood app
+3. Say *"Logout"* — tokens are wiped instantly. Ask Claude to confirm.
 
-### Get a Quote
-```
-You: What's TSLA trading at?
+## Traction
 
-Claude: TSLA (Tesla Inc) - $421.06
-  • Bid: $421.05 × 100
-  • Ask: $421.08 × 200
-  • Day Range: $415.02 - $428.50
-  • Volume: 42.3M
-```
-
-### Place a Trade
-```
-You: Buy 5 shares of GOOGL at $191
-
-Claude: I'll place a limit order to buy 5 shares of GOOGL at $191.00.
-
-  [Calls place_order tool]
-
-  ✓ Limit order placed successfully
-  • Order ID: 67890-abcdef
-  • Buy 5 GOOGL @ $191.00 limit
-```
-
-### Cancel an Order
-```
-You: Cancel my GOOGL order
-
-Claude: [Calls cancel_order tool]
-
-  ✓ Order cancelled successfully
-```
+- 50+ users, 60K+ orders served
+- Active traders running automated strategies via `/loop`
+- Used on both claude.ai and Claude Code
 
 ## Troubleshooting
 
-| Issue | Solution |
-|-------|----------|
-| Browser doesn't open for auth | Type `/mcp` → select `trayd` → click "Authorize" |
-| Phone notification not received | Ensure Robinhood app is installed and you're logged in |
-| "Authentication required" error | Run `/mcp` to re-authenticate |
-| Market order rejected after hours | Use limit orders (Robinhood policy for extended hours) |
+| Issue | Fix |
+|-------|-----|
+| Auth not working | Type `/mcp` > select `trayd` > click **Authorize** |
+| Phone notification missing | Make sure Robinhood app is installed and you're logged in |
+| "Authentication required" | Re-run `/mcp` to refresh your token |
+| Market order rejected after hours | Use limit orders — Robinhood policy |
 
-## FAQ
+## Disclaimer
 
-**Is this safe?**
-
-Yes, and here's why you can verify it yourself:
-
-1. **Phone 2FA on every login** - Robinhood sends a notification to your phone. Nothing happens unless you tap "Approve". You control access.
-
-2. **Your Claude is honest to you** - This MCP runs through *your* Claude Code. Ask Claude "Am I logged in to Robinhood?" or "Is my Robinhood linked?" anytime. Claude will honestly tell you your connection status because it's *your* assistant.
-
-3. **Instant logout, verified by Claude** - Say "Logout from Robinhood" and all credentials are immediately wiped from memory. Then ask Claude "Am I still connected?" - it will confirm you're logged out. No trust required—verify it yourself.
-
-4. **Test with a safe order first** - Try "Place a limit buy for 1 NVDA at $50" (a price that won't execute). Check your Robinhood app—you'll see the order. Cancel it from either place. Now you know it works, with zero risk.
-
-**Why should I trust you?**
-
-You don't have to trust us blindly—you can verify:
-- **Phone approval required** - We can't access your account without you tapping Approve
-- **Ask Claude to verify** - Your Claude Code honestly reports your connection status
-- **Logout = instant wipe** - Say "logout" and ask Claude to confirm you're disconnected
-- **Server restarts wipe everything** - Tokens only exist in memory, never on disk
-
-**What if something goes wrong with a trade?**
-You are responsible for all trades placed through your account. We provide the interface; you make the decisions. Always verify orders before confirming.
-
-## Risks & Disclaimers
-
-**Please read before using:**
-
-- **USE AT YOUR OWN RISK** - This software is provided "as is" without warranty
-- **NOT FINANCIAL ADVICE** - We don't provide investment recommendations
-- **YOU ARE RESPONSIBLE** - For all trades and decisions made through this tool
-- **NO LIABILITY** - We are not liable for any losses, bugs, or issues
-- **BETA SOFTWARE** - This is early-stage software; expect rough edges
-
-**By using Trayd, you acknowledge:**
-1. You understand the security model and accept the risks
-2. You are solely responsible for your trading decisions
-3. You will not hold Trayd liable for any losses
-4. You understand this is not affiliated with Robinhood
-
----
-
-**Not affiliated with Robinhood Markets, Inc.**
-
-**Not financial advice.** This tool helps you interact with your own brokerage account. All investment decisions are yours.
+This software is provided as-is. You are solely responsible for all trades placed through your account. Not financial advice. Not affiliated with Robinhood Markets, Inc.
 
 ## Support
 
-- Email: team@trayd.ai
-- GitHub: [trayders/trayd-mcp](https://github.com/trayders/trayd-mcp/issues)
+Email: team@trayd.ai
+Issues: [trayders/trayd-mcp](https://github.com/trayders/trayd-mcp/issues)
 
 ## License
 
