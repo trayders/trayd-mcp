@@ -101,6 +101,34 @@ You → Claude → Trayd Server → Robinhood API
 - Active traders running automated strategies via `/loop`
 - Used on both claude.ai and Claude Code
 
+### User Growth
+
+```mermaid
+xychart-beta
+    title "Cumulative Users"
+    x-axis ["Dec", "Jan", "Feb", "Mar", "Apr", "May"]
+    y-axis "Users" 0 --> 120
+    bar [3, 12, 19, 43, 102, 114]
+```
+
+### Weekly Active Users & Orders
+
+```mermaid
+xychart-beta
+    title "Weekly Unique Users (since Mar 2026)"
+    x-axis ["Mar 2", "Mar 9", "Mar 16", "Mar 23", "Mar 30", "Apr 6", "Apr 13", "Apr 20", "Apr 27", "May 4"]
+    y-axis "Unique Users" 0 --> 35
+    line [3, 9, 13, 14, 7, 27, 30, 23, 26, 19]
+```
+
+```mermaid
+xychart-beta
+    title "Weekly Orders Executed"
+    x-axis ["Mar 2", "Mar 9", "Mar 16", "Mar 23", "Mar 30", "Apr 6", "Apr 13", "Apr 20", "Apr 27", "May 4"]
+    y-axis "Orders" 0 --> 30000
+    bar [23641, 28958, 1316, 176, 38, 332, 20613, 4003, 22179, 5198]
+```
+
 ## Troubleshooting
 
 | Issue | Fix |
