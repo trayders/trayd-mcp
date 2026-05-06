@@ -8,6 +8,12 @@ Trade Robinhood from Claude. Portfolio analysis, real-time quotes, and order exe
 
 ![Demo](demo.gif)
 
+![Metrics](assets/metrics.svg)
+
+![User Growth](assets/growth.svg)
+
+![MCP Calls](assets/calls.svg)
+
 ## Setup
 
 ### Claude.ai (Web App) — No Install Required
@@ -87,12 +93,6 @@ You → Claude → Trayd Server → Robinhood API
 **Verify it yourself:** Place a test order that won't fill — *"Limit buy 1 NVDA at $50"* — check your Robinhood app, you'll see it. Cancel from either side. Zero risk.
 
 ## Traction
-
-![Metrics](assets/metrics.svg)
-
-![User Growth](assets/growth.svg)
-
-![MCP Calls](assets/calls.svg)
 
 - Active traders running automated strategies via `/loop`
 - Used on both claude.ai and Claude Code
