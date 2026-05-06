@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <!-- Background -->
+  <rect width="800" height="120" rx="12" fill="#0d1117"/>
+
+  <!-- Metric 1: Users -->
+  <rect x="20" y="20" width="180" height="80" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="110" y="52" fill="#7d8590" font-size="12" text-anchor="middle" font-weight="500">USERS</text>
+  <text x="110" y="82" fill="#e6edf3" font-size="28" text-anchor="middle" font-weight="700">114</text>
+
+  <!-- Metric 2: Orders -->
+  <rect x="215" y="20" width="180" height="80" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="305" y="52" fill="#7d8590" font-size="12" text-anchor="middle" font-weight="500">ORDERS EXECUTED</text>
+  <text x="305" y="82" fill="#e6edf3" font-size="28" text-anchor="middle" font-weight="700">70K+</text>
+
+  <!-- Metric 3: Quotes -->
+  <rect x="410" y="20" width="180" height="80" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="500" y="52" fill="#7d8590" font-size="12" text-anchor="middle" font-weight="500">QUOTES SERVED</text>
+  <text x="500" y="82" fill="#e6edf3" font-size="28" text-anchor="middle" font-weight="700">650K+</text>
+
+  <!-- Metric 4: Uptime -->
+  <rect x="605" y="20" width="180" height="80" rx="8" fill="#161b22" stroke="#21262d" stroke-width="1"/>
+  <text x="695" y="52" fill="#7d8590" font-size="12" text-anchor="middle" font-weight="500">ACTIVATION TIME</text>
+  <text x="695" y="82" fill="#3fb950" font-size="28" text-anchor="middle" font-weight="700">3 min</text>
+</svg>
