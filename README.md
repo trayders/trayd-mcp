@@ -3,7 +3,6 @@
 Trade Robinhood from Claude. Portfolio analysis, real-time quotes, and order execution through natural language.
 
 ![MCP](https://img.shields.io/badge/MCP-Compatible-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
 ![Users](https://img.shields.io/badge/users-110+-brightgreen)
 ![Orders](https://img.shields.io/badge/orders-70K+-orange)
 
@@ -93,6 +92,8 @@ You → Claude → Trayd Server → Robinhood API
 
 ![User Growth](assets/growth.svg)
 
+![MCP Calls](assets/calls.svg)
+
 - Active traders running automated strategies via `/loop`
 - Used on both claude.ai and Claude Code
 
@@ -112,5 +113,3 @@ This software is provided as-is. You are solely responsible for all trades place
 ---
 
 **Email:** team@trayd.ai | **Issues:** [trayders/trayd-mcp](https://github.com/trayders/trayd-mcp/issues)
-
-MIT License

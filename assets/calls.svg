@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="callGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="320" rx="12" fill="#0d1117"/>
+
+  <!-- Title -->
+  <text x="40" y="40" fill="#e6edf3" font-size="18" font-weight="600">MCP Calls</text>
+  <text x="40" y="62" fill="#7d8590" font-size="13">Cumulative API calls served — 1.88M total</text>
+
+  <!-- Highlight badge -->
+  <rect x="620" y="24" width="140" height="28" rx="14" fill="#22c55e" fill-opacity="0.15"/>
+  <text x="690" y="43" fill="#3fb950" font-size="13" font-weight="600" text-anchor="middle">1.88M total</text>
+
+  <!-- Grid lines -->
+  <line x1="80" y1="100" x2="740" y2="100" stroke="#21262d" stroke-width="1"/>
+  <line x1="80" y1="145" x2="740" y2="145" stroke="#21262d" stroke-width="1"/>
+  <line x1="80" y1="190" x2="740" y2="190" stroke="#21262d" stroke-width="1"/>
+  <line x1="80" y1="235" x2="740" y2="235" stroke="#21262d" stroke-width="1"/>
+
+  <!-- Y-axis labels -->
+  <text x="70" y="104" fill="#7d8590" font-size="11" text-anchor="end">2.0M</text>
+  <text x="70" y="149" fill="#7d8590" font-size="11" text-anchor="end">1.5M</text>
+  <text x="70" y="194" fill="#7d8590" font-size="11" text-anchor="end">1.0M</text>
+  <text x="70" y="239" fill="#7d8590" font-size="11" text-anchor="end">0.5M</text>
+
+  <!-- Area fill - cumulative: 230K, 564K, 582K, 583K, 584K, 588K, 686K, 1653K, 1843K, 1878K -->
+  <!-- Y scale: 0=280, 2M=95. So per 100K = 9.25px up from 280 -->
+  <!-- 230K=259, 564K=228, 582K=226, 583K=226, 584K=226, 588K=226, 686K=217, 1653K=127, 1843K=110, 1878K=107 -->
+  <path d="M 110 259 L 183 228 L 256 226 L 329 226 L 402 226 L 475 226 L 548 217 L 621 127 L 694 110 L 740 107 L 740 280 L 110 280 Z" fill="url(#callGrad)"/>
+
+  <!-- Line -->
+  <path d="M 110 259 L 183 228 L 256 226 L 329 226 L 402 226 L 475 226 L 548 217 L 621 127 L 694 110 L 740 107" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Key data points only -->
+  <circle cx="110" cy="259" r="4" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="183" cy="228" r="4" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="548" cy="217" r="4" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="621" cy="127" r="5" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="740" cy="107" r="6" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
+
+  <!-- Key labels -->
+  <text x="110" y="251" fill="#7d8590" font-size="11" text-anchor="middle">230K</text>
+  <text x="183" y="220" fill="#7d8590" font-size="11" text-anchor="middle">564K</text>
+  <text x="621" y="119" fill="#e6edf3" font-size="13" font-weight="600" text-anchor="middle">1.65M</text>
+  <text x="740" y="99" fill="#e6edf3" font-size="13" font-weight="700" text-anchor="middle">1.88M</text>
+
+  <!-- X-axis labels -->
+  <text x="110" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Mar 2</text>
+  <text x="256" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Mar 16</text>
+  <text x="402" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Mar 30</text>
+  <text x="548" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Apr 13</text>
+  <text x="694" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Apr 27</text>
+  <text x="740" y="298" fill="#7d8590" font-size="11" text-anchor="middle">May</text>
+</svg>
