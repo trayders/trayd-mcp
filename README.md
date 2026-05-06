@@ -85,13 +85,6 @@ You → Claude → Trayd Server → Robinhood API
 - Robinhood phone 2FA on every login — you approve each session on your device
 - Infrastructure: AWS ECS Fargate + Cloudflare Tunnel + HTTPS everywhere
 
-| Data | Stored? | Details |
-|------|---------|---------|
-| Robinhood password | No | Passed through, immediately discarded |
-| Access token | In memory | Wiped on logout or restart |
-| Trades and positions | No | Fetched live from Robinhood |
-| Google identity | Yes | Via Clerk, for auth only |
-
 **Verify it yourself:** Place a test order that won't fill — *"Limit buy 1 NVDA at $50"* — check your Robinhood app, you'll see it. Cancel from either side. Zero risk.
 
 ## Traction
