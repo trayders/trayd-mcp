@@ -8,11 +8,11 @@ Trade Robinhood from Claude. Portfolio analysis, real-time quotes, and order exe
 
 ![Demo](demo.gif)
 
-![Metrics](assets/metrics.svg)
+![Metrics](assets/metrics.svg?v=2)
 
-![User Growth](assets/growth.svg)
+![User Growth](assets/growth.svg?v=2)
 
-![MCP Calls](assets/calls.svg)
+![MCP Calls](assets/calls.svg?v=2)
 
 ## Setup
 
