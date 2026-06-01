@@ -5,56 +5,36 @@
       <stop offset="100%" stop-color="#22c55e" stop-opacity="0.02"/>
     </linearGradient>
   </defs>
-
-  <!-- Background -->
   <rect width="800" height="320" rx="12" fill="#0d1117"/>
-
-  <!-- Title -->
   <text x="40" y="40" fill="#e6edf3" font-size="18" font-weight="600">MCP Calls</text>
-  <text x="40" y="62" fill="#7d8590" font-size="13">Cumulative API calls served — 1.88M total</text>
-
-  <!-- Highlight badge -->
+  <text x="40" y="62" fill="#7d8590" font-size="13">Cumulative API calls served — 2.4M total</text>
   <rect x="620" y="24" width="140" height="28" rx="14" fill="#22c55e" fill-opacity="0.15"/>
-  <text x="690" y="43" fill="#3fb950" font-size="13" font-weight="600" text-anchor="middle">1.88M total</text>
-
-  <!-- Grid lines -->
-  <line x1="80" y1="100" x2="740" y2="100" stroke="#21262d" stroke-width="1"/>
-  <line x1="80" y1="145" x2="740" y2="145" stroke="#21262d" stroke-width="1"/>
-  <line x1="80" y1="190" x2="740" y2="190" stroke="#21262d" stroke-width="1"/>
-  <line x1="80" y1="235" x2="740" y2="235" stroke="#21262d" stroke-width="1"/>
-
-  <!-- Y-axis labels -->
-  <text x="70" y="104" fill="#7d8590" font-size="11" text-anchor="end">2.0M</text>
-  <text x="70" y="149" fill="#7d8590" font-size="11" text-anchor="end">1.5M</text>
-  <text x="70" y="194" fill="#7d8590" font-size="11" text-anchor="end">1.0M</text>
-  <text x="70" y="239" fill="#7d8590" font-size="11" text-anchor="end">0.5M</text>
-
-  <!-- Area fill - cumulative: 230K, 564K, 582K, 583K, 584K, 588K, 686K, 1653K, 1843K, 1878K -->
-  <!-- Y scale: 0=280, 2M=95. So per 100K = 9.25px up from 280 -->
-  <!-- 230K=259, 564K=228, 582K=226, 583K=226, 584K=226, 588K=226, 686K=217, 1653K=127, 1843K=110, 1878K=107 -->
-  <path d="M 110 259 L 183 228 L 256 226 L 329 226 L 402 226 L 475 226 L 548 217 L 621 127 L 694 110 L 740 107 L 740 280 L 110 280 Z" fill="url(#callGrad)"/>
-
-  <!-- Line -->
-  <path d="M 110 259 L 183 228 L 256 226 L 329 226 L 402 226 L 475 226 L 548 217 L 621 127 L 694 110 L 740 107" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- Key data points only -->
-  <circle cx="110" cy="259" r="4" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
-  <circle cx="183" cy="228" r="4" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
-  <circle cx="548" cy="217" r="4" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
-  <circle cx="621" cy="127" r="5" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
-  <circle cx="740" cy="107" r="6" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
-
-  <!-- Key labels -->
-  <text x="110" y="251" fill="#7d8590" font-size="11" text-anchor="middle">230K</text>
-  <text x="183" y="220" fill="#7d8590" font-size="11" text-anchor="middle">564K</text>
-  <text x="621" y="119" fill="#e6edf3" font-size="13" font-weight="600" text-anchor="middle">1.65M</text>
-  <text x="740" y="99" fill="#e6edf3" font-size="13" font-weight="700" text-anchor="middle">1.88M</text>
-
-  <!-- X-axis labels -->
-  <text x="110" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Mar 2</text>
-  <text x="256" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Mar 16</text>
-  <text x="402" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Mar 30</text>
-  <text x="548" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Apr 13</text>
-  <text x="694" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Apr 27</text>
+  <text x="690" y="43" fill="#3fb950" font-size="13" font-weight="600" text-anchor="middle">2.4M total</text>
+  <line x1="80" y1="243.0" x2="760" y2="243.0" stroke="#21262d" stroke-width="1"/>
+  <line x1="80" y1="206.0" x2="760" y2="206.0" stroke="#21262d" stroke-width="1"/>
+  <line x1="80" y1="169.0" x2="760" y2="169.0" stroke="#21262d" stroke-width="1"/>
+  <line x1="80" y1="132.0" x2="760" y2="132.0" stroke="#21262d" stroke-width="1"/>
+  <line x1="80" y1="95.0" x2="760" y2="95.0" stroke="#21262d" stroke-width="1"/>
+  <text x="70" y="247.0" fill="#7d8590" font-size="11" text-anchor="end">0.5M</text>
+  <text x="70" y="210.0" fill="#7d8590" font-size="11" text-anchor="end">1.0M</text>
+  <text x="70" y="173.0" fill="#7d8590" font-size="11" text-anchor="end">1.5M</text>
+  <text x="70" y="136.0" fill="#7d8590" font-size="11" text-anchor="end">2.0M</text>
+  <text x="70" y="99.0" fill="#7d8590" font-size="11" text-anchor="end">2.5M</text>
+  <path d="M 110 280.0 L 236 279.9 L 362 266.8 L 488 223.6 L 614 130.9 L 740 102.4 L 740 280 L 110 280 Z" fill="url(#callGrad)"/>
+  <path d="M 110 280.0 L 236 279.9 L 362 266.8 L 488 223.6 L 614 130.9 L 740 102.4" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="110" cy="280.0" r="4" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="236" cy="279.9" r="4" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="362" cy="266.8" r="4" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="488" cy="223.6" r="4" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="614" cy="130.9" r="5" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
+  <circle cx="740" cy="102.4" r="6" fill="#22c55e" stroke="#0d1117" stroke-width="2"/>
+  <text x="488" y="214.6" fill="#e6edf3" font-size="12" font-weight="600" text-anchor="middle">762K</text>
+  <text x="614" y="121.9" fill="#e6edf3" font-size="13" font-weight="600" text-anchor="middle">2.01M</text>
+  <text x="740" y="93.4" fill="#e6edf3" font-size="13" font-weight="700" text-anchor="middle">2.40M</text>
+  <text x="110" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Dec</text>
+  <text x="236" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Jan</text>
+  <text x="362" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Feb</text>
+  <text x="488" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Mar</text>
+  <text x="614" y="298" fill="#7d8590" font-size="11" text-anchor="middle">Apr</text>
   <text x="740" y="298" fill="#7d8590" font-size="11" text-anchor="middle">May</text>
 </svg>

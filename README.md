@@ -3,8 +3,8 @@
 Trade Robinhood from Claude. Portfolio analysis, real-time quotes, and order execution through natural language.
 
 ![MCP](https://img.shields.io/badge/MCP-Compatible-blue)
-![Users](https://img.shields.io/badge/users-110+-brightgreen)
-![Orders](https://img.shields.io/badge/orders-70K+-orange)
+![Users](https://img.shields.io/badge/users-230+-brightgreen)
+![Orders](https://img.shields.io/badge/orders-85K+-orange)
 
 ![Demo](demo.gif)
 
